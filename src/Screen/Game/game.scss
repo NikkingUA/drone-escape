@@ -1,0 +1,50 @@
+.container {
+  text-align: center;
+  height: 100vh;
+
+  div {
+    height: 100%;
+    background-size: auto 100%;
+    background-position: bottom;
+    background-repeat: repeat-x;
+  }
+
+  .sky {
+    background-image: url("../../Assets/img/bg/Pale/sky_pale.png");
+    animation: slide 15s linear infinite;
+  }
+
+  .backhouses {
+    background-image: url("../../Assets/img/bg/Pale/houses3_pale.png");
+    animation: slide 10s linear infinite;
+  }
+
+  .road {
+    background-image: url("../../Assets/img/bg/Pale/road_pale.png");
+    animation: slide 7s linear infinite;
+  }
+
+  .crosswalk {
+    background-image: url("../../Assets/img/bg/Pale/crosswalk_pale.png");
+    animation: slide 3s linear infinite;
+  }
+  .front-houses2 {
+    background-image: url("../../Assets/img/bg/Pale/houses2_pale.png");
+    animation: slide 9s linear infinite;
+  }
+  .front-houses1 {
+    background-image: url("../../Assets/img/bg/Pale/houses1_pale.png");
+    animation: slide 8s linear infinite;
+  }
+
+  //   @keyframes slide {
+  //     0% {
+  //       //   transform: translate(0);
+  //       background-position: 0 0;
+  //     }
+  //     100% {
+  //       //   transform: translate(-3673px); /* The image width */
+  //       background-position: -1920px 0;
+  //     }
+  //   }
+}

@@ -1,67 +1,26 @@
 .flex {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .inputbox {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    margin-bottom: 2rem;
+  margin-bottom: 2rem;
 }
 
 .nes-icon {
-    margin: 2rem 1rem;
+  margin: 2rem 1rem;
 }
 
 * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 .Welcome {
-    flex-direction: column;
-    height: 800px;
-}
-
-// .scrolling-image-container {
-//     overflow: hidden;
-//     .scrolling-image {
-//         background: url("./F308459301091C03-keyframe-poster-652x3673.jpg") repeat-x;
-//         height: 750px;
-//         width: 7680px;
-//         animation: slide linear infinite;
-//     }
-//     @keyframes slide {
-//         0% {
-//             transform: translate(0);
-//         }
-//         100% {
-//             transform: translate(-3673px); /* The image width */
-//         }
-//     }
-// }
-
-.container {
-    text-align: center;
-    .sky {
-        
-        background: url("../../Assets/img/bg/Pale/sky_pale.png")
-    }
-    .backhouses {
-        
-        background: url("../../Assets/img/bg/Pale/houses3_pale.png")
-    }
-    .road {
-        
-        background: url("../../Assets/img/bg/Pale/road_pale.png");
-    }
-    .crosswalk {
-        
-        background: url("../../Assets/img/bg/Pale/crosswalk_pale.png");
-    }
-}
-.height{
-    height: 950px;
+  flex-direction: column;
+  height: 800px;
 }
