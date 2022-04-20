@@ -11,10 +11,10 @@ const UiButton = (props) => {
 
     return <>
         <button
-            type={props.type}
+            type={props.btnType}
             onClick={handleClick}
-            className={`nes-btn ${props.class}`}
-            style={props.style}
+            className={`nes-btn ${props.btnClass}`}
+            style={props.btnStyle}
         >
             {props.innerText}
         </button>

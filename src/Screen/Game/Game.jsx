@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import UiButton from "../../Components/FunctionComponents/UiButton/UiButton";
-
+import UiInput from "../../Components/FunctionComponents/UiInput/UiInput";
 class Game extends Component {
 
     constructor(props) {
@@ -9,18 +9,32 @@ class Game extends Component {
 
     }
 
-    clickTest = (e) => {
+    test = (e) => {
         console.log(e);
     }
 
     render() {
         return <>
-            <UiButton
-                callback={this.clickTest}
-                class={"is-success"}
-                style={{ color: "grey" }}
-                innerText={"Button text"}
-            />
+            <form onSubmit={this.test}>
+
+                <UiInput
+                    inputType="text"
+                    inputName="user_name"
+                    inputClass="signup-input"
+                    callback={this.test}
+                    // inputValue={state.mail}
+                    inputPlaceholder="type your email"
+                    isRequired
+                />
+
+                <UiButton
+                    btnType="submit"
+                    callback={this.test}
+                    btnClass={"is-success"}
+                    btnStyle={{ color: "grey" }}
+                    innerText={"Button text"}
+                />
+            </form>
 
         </>;
     }
