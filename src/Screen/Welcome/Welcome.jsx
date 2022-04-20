@@ -17,9 +17,9 @@ function Welcome() {
     }
 
     return <div className="Welcome flex">
-        {/* <div class="scrolling-image-container">
+        <div class="scrolling-image-container">
             <div class="scrolling-image"></div>
-        </div> */}
+        </div>
         <UiHeader />
 
         <UiInput
