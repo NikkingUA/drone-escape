@@ -1,0 +1,50 @@
+@use "../../variables"as var;
+
+.ranking-screen {
+    background-color: var.$secondary;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 1rem;
+}
+
+.leaderboard {
+    height: 100%;
+    width: 100%;
+    max-width: 500px;
+    background-color: #fff;
+    border-radius: 20px;
+
+}
+
+.leaderboard-item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.users-container {
+    height: calc(100% - 10rem);
+    overflow-y: auto;
+    padding-inline-start: 0;
+
+    li {
+        margin-bottom: .5rem;
+    }
+}
+
+.leaderboard-footer {
+    text-align: center;
+}
+
+.close-btn {
+    margin-left: auto;
+}
+
+.nes-icon {
+    &.icon-white {
+        margin-bottom: 1rem;
+        filter: brightness(10);
+        text-align: end;
+    }
+}
