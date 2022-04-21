@@ -1,8 +1,4 @@
 import React, { Component } from "react";
-
-import UiButton from "../../Components/FunctionComponents/UiButton/UiButton";
-import UiInput from "../../Components/FunctionComponents/UiInput/UiInput";
-
 import "./game.scss";
 class Game extends Component {
     // constructor(props) {
@@ -18,7 +14,7 @@ class Game extends Component {
         return (
             <div className="container">
 
-                {/* <div className="bg"> */}
+                <div className="parallax">
                 <div className="sky bg">
                     <div className="backhouses bg">
                         <div className="front-houses2 bg">
@@ -30,7 +26,7 @@ class Game extends Component {
                         </div>
                     </div>
                 </div>
-                {/* </div> */}
+                </div>
 
                 <div className="drone">
                 </div>
