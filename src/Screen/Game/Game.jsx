@@ -5,32 +5,38 @@ import UiInput from "../../Components/FunctionComponents/UiInput/UiInput";
 
 import "./game.scss";
 class Game extends Component {
-  // constructor(props) {
-  //     super(props);
+    // constructor(props) {
+    //     super(props);
 
-  // }
+    // }
 
-  test = (e) => {
-    console.log(e);
-  };
+    test = (e) => {
+        console.log(e);
+    };
 
-  render() {
-    return (
-      <div className="container">
-        <div className="sky">
-          <div className="backhouses">
-            <div className="front-houses2">
-              <div className="front-houses1">
-                <div className="road">
-                  <div className="crosswalk"></div>
+    render() {
+        return (
+            <div className="container">
+
+                {/* <div className="bg"> */}
+                <div className="sky bg">
+                    <div className="backhouses bg">
+                        <div className="front-houses2 bg">
+                            <div className="front-houses1 bg">
+                                <div className="road bg">
+                                    <div className="crosswalk bg"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
+                {/* </div> */}
+
+                <div className="drone">
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
+        );
+    }
 }
 
 export default Game;
