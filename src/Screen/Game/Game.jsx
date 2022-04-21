@@ -28,7 +28,7 @@ class Game extends Component {
                 </div>
                 </div>
 
-                <div className="drone">
+                <div className="drone scroll_smooth">
                 </div>
             </div>
         );
