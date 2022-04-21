@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import UiModal from "../../Components/FunctionComponents/UiModal/UiModal";
 import "./game.scss";
 
 // const drone = document.getElementById("drone");
@@ -51,7 +52,9 @@ class Game extends Component {
 
                 <div id="drone" className="drone scroll_smooth">
                 </div>
+                <UiModal/>
             </div>
+
         );
     }
 }

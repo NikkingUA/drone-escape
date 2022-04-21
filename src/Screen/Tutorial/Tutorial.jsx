@@ -8,7 +8,7 @@ const Tutorial = (props) => {
     <div className="block_screen">
       <Carousel />
       <div className="btn_position">
-        <button type="button" className=" nes-btn is-error">
+        <button type="button" className=" nes-btn is-error" navigate="/drone-escape">
           Play
         </button>
       </div>

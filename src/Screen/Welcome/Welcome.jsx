@@ -13,23 +13,21 @@ function Welcome() {
 
     function CbInput(e) {
         console.log(e);
-
     }
 
+
+
     return <div className="Welcome flex">
-        <div class="scrolling-image-container">
-            <div class="scrolling-image"></div>
-        </div>
         <UiHeader />
 
         <UiInput
             callback={CbInput}
-            placeeholder="Inserisci il tuo nome"
+            innerText="Inserisci il tuo nome"
         />
 
         <UiButton
             navigate="/Tutorial"
-            label="Vai al Tutorial"
+            innerText="Vai al Tutorial"
         />
         <UiSocial />
     </div>;
