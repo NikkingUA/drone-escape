@@ -63,7 +63,7 @@ body {
         animation: slide 100s linear infinite;
     }
 
-    @keyframes slide {
+    /* @keyframes slide {
         from {
             transform: translateX(0);
         }
@@ -71,7 +71,7 @@ body {
         to {
             transform: translateX(-30%);
         }
-    }
+    } */
 }
 
 
@@ -91,6 +91,7 @@ body {
     left: 10%;
     // transform: translate(-50%, -50%) scale(3) translateY(var(--y));
     transform: translate(-50%, -50%) translateY(var(--y));
+    transition: transform 6s linear;
 
 
     @keyframes sprite {

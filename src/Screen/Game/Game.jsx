@@ -1,32 +1,39 @@
 import React, { Component } from "react";
-import v from "./game.scss";
+import "./game.scss";
+
+// const drone = document.getElementById("drone");
+// const drone_height = drone.offsetHeight;
+// const maxOffset = window.innerHeight / 2 - drone_height / 2;
 class Game extends Component {
     constructor(props) {
         super(props);
 
+        this.drone = null;
+        this.drone_height = null;
+        this.maxOffset = null;
     }
 
     componentDidMount() {
-        const drone = document.getElementById("drone");
-        const drone_height = drone.offsetHeight;
+        this.drone = document.getElementById("drone");
+        this.drone_height = this.drone.offsetHeight;
 
-        console.log(drone_height);
-        let maxOffset = window.innerHeight / 2 - drone_height / 2;
+        // console.log(drone_height);
+        this.maxOffset = window.innerHeight / 2 - this.drone_height / 2;
 
-        /* let y = 0;
-        for (let i = 0; i < maxOffset; i++) {
-            y++
-        } */
-        drone.style.setProperty("--y", -maxOffset + "px");
+        this.drone.style.setProperty("--y", this.maxOffset + "px");
     }
 
-    test = (e) => {
-        console.log(e);
-    };
+    jump = (e) => {
+
+        this.drone.style.setProperty("--y", -this.maxOffset + "px");
+
+        // setTimeout(() => this.drone.style.setProperty("--y", this.maxOffset + "px"), 1000)
+
+    }
 
     render() {
         return (
-            <div className="container">
+            <div className="container" onClick={this.jump}>
 
                 <div className="parallax">
                     <div className="sky bg">
