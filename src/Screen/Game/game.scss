@@ -89,9 +89,10 @@ body {
     position: absolute;
     top: 50%;
     left: 10%;
-    // transform: translate(-50%, -50%) scale(3) translateY(var(--y));
-    transform: translate(-50%, -50%) translateY(var(--y));
-    transition: transform 6s linear;
+
+    // transform: translate(-50%, -50%) scale(2) translateY(var(--y));
+    // transition: transform 6s linear;
+    transform: translate(-50%, -50%) scale(2);
 
 
     @keyframes sprite {
