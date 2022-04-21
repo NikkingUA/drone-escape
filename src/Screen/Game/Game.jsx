@@ -7,12 +7,17 @@ class Game extends Component {
     }
 
     componentDidMount() {
-        // console.log('mount');
-
         const drone = document.getElementById("drone");
+        const drone_height = drone.offsetHeight;
 
-        console.log(window.innerHeight);
-        drone.style.setProperty("--y", window.innerHeight / 2 + "px");
+        console.log(drone_height);
+        let maxOffset = window.innerHeight / 2 - drone_height / 2;
+
+        /* let y = 0;
+        for (let i = 0; i < maxOffset; i++) {
+            y++
+        } */
+        drone.style.setProperty("--y", -maxOffset + "px");
     }
 
     test = (e) => {
