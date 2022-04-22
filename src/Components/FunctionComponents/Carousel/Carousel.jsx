@@ -1,7 +1,7 @@
 import React from "react";
 import "./carousel.css";
 
-const Tutorial = (props) => {
+function Tutorial(props){
   return (
     <div className="tutorial_block">
       <div className="center_block_carousel">

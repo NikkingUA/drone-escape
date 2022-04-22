@@ -1,9 +1,7 @@
-import React, { Component } from "react";
+import React, { Component } from "react"; import UiModal from "../../Components/FunctionComponents/UiModal/UiModal";
 import "./game.scss";
+import sound from "../../Assets/sound/sound.mp3"
 
-// const drone = document.getElementById("drone");
-// const drone_height = drone.offsetHeight;
-// const maxOffset = window.innerHeight / 2 - drone_height / 2;
 class Game extends Component {
     constructor(props) {
         super(props);
@@ -13,13 +11,19 @@ class Game extends Component {
         this.maxOffset = null;
         this.descending = null;
         this.ascending = null;
-        this.smooth_jump = null;
-        this.stop = false;
+        // this.smooth_jump = null;
+        this.intervalOstacle();
 
         this.state = {
+            ostacle: false,
+            counter: 0,
+            timeStart: 3,
+            visibilityScoreModal: false,
             y: 0,
             game_over: false
-        }
+
+        };
+
     }
 
     componentDidMount() {
@@ -56,7 +60,7 @@ class Game extends Component {
 
     }
 
-    jump = (e) => {
+    jumpDrone = (e) => {
         let deltaY = 0;
 
         if (this.state.y < -this.maxOffset - 200) {
@@ -81,11 +85,49 @@ class Game extends Component {
         })
     }
 
+    scoreGame() {
+        let myInterval = setInterval(() => {
+            this.setState({
+                ...this.state,
+                counter: this.state.counter + 1,
+            });
+        }, 1000);
+
+        if (this.state.counter === 100) {
+            clearInterval(myInterval);
+        }
+    }
+
+    intervalOstacle = () => {
+        setTimeout(() => {
+            this.setState({
+                ostacle: !this.state.ostacle,
+            });
+        }, 13000);
+    };
+
+    play() {
+        const audio = new Audio(sound);
+        audio.play()
+    }
+
+    viewScoreModal = () => {
+        this.setState({ visibilityScoreModal: true })
+    }
+
     render() {
         return (
-            <div className="container" onClick={this.jump}>
-
+            <div className="container" onClick={this.jumpDrone}>
                 <div className="parallax">
+                    <div className="score">
+                        Score: {this.state.counter}, timeStart: {this.state.timeStart}
+                    </div>
+                    {this.state.ostacle ? (
+                        <div className="ostacle_top animate"></div>
+                    ) : (
+                        ""
+                    )}
+
                     <div className="sky bg">
                         <div className="backhouses bg">
                             <div className="front-houses2 bg">
@@ -97,13 +139,25 @@ class Game extends Component {
                             </div>
                         </div>
                     </div>
-                </div>
+                    {
+                        this.state.ostacle ? (
+                            <div className="ostacle_bottom animate"></div>
+                        ) : (
+                            ""
+                        )
+                    }
+                </div >
 
                 <div id="drone" className="drone scroll_smooth" style={{
                     transform: `translate(-50%, -50%) translateY(${this.state.y}px) scale(2)`
                 }}>
                 </div>
-            </div>
+
+                {this.state.game_over === true &&
+
+                    <UiModal playSound={this.play} />
+                }
+            </div >
         );
     }
 }

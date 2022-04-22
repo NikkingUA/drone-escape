@@ -17,6 +17,15 @@ body {
     overflow: hidden;
     position: fixed;
 
+    .score {
+        color: red;
+        font-size: 30px;
+        position: fixed;
+        top: 20px;
+        left: 30px;
+        z-index: 23;
+    }
+
     //image-rendering: pixelated;
     .bg {
         width: 200%;
@@ -63,7 +72,31 @@ body {
         animation: slide 100s linear infinite;
     }
 
-    /* @keyframes slide {
+    .ostacle_top {
+        background: url("../../Assets/img/obstacles/smog.png") repeat-x top;
+        z-index: 10;
+        width: 200%;
+        height: 300px;
+        background-size: 30%;
+        top: 0;
+        left: 0;
+        position: fixed;
+        animation: slide 10s linear infinite;
+    }
+
+    .ostacle_bottom {
+        background: url("../../Assets/img/obstacles/lamps_cars.png") repeat-x 0 bottom;
+        z-index: 10;
+        width: 200%;
+        height: 300px;
+        background-size: 30%;
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        animation: slide 5s linear infinite;
+    }
+
+    @keyframes slide {
         from {
             transform: translateX(0);
         }
@@ -71,9 +104,8 @@ body {
         to {
             transform: translateX(-30%);
         }
-    } */
+    }
 }
-
 
 :root {
     --y: 0;
@@ -93,7 +125,6 @@ body {
     // transform: translate(-50%, -50%) scale(2) translateY(var(--y));
     // transition: transform 6s linear;
     transform: translate(-50%, -50%) scale(2);
-
 
     @keyframes sprite {
         to {
