@@ -1,6 +1,6 @@
 import React from "react";
 
-const ParallaxBg = (props) => {
+function ParallaxBg(props){
   return <></>;
 };
 

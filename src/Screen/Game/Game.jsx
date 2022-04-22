@@ -1,5 +1,6 @@
-import React, { Component } from "react";
+import React, { Component } from "react"; import UiModal from "../../Components/FunctionComponents/UiModal/UiModal";
 import "./game.scss";
+import sound from "../../Assets/sound/sound.mp3"
 
 // const drone = document.getElementById("drone");
 // const drone_height = drone.offsetHeight;
@@ -11,6 +12,9 @@ class Game extends Component {
         this.drone = null;
         this.drone_height = null;
         this.maxOffset = null;
+        this.state = {
+            visibilityScoreModal: false
+        }
     }
 
     componentDidMount() {
@@ -27,8 +31,17 @@ class Game extends Component {
 
         this.drone.style.setProperty("--y", -this.maxOffset + "px");
 
-        // setTimeout(() => this.drone.style.setProperty("--y", this.maxOffset + "px"), 1000)
+        setTimeout(() => this.drone.style.setProperty("--y", this.maxOffset + "px"), 1000)
 
+    }
+
+    play() {
+        const audio = new Audio(sound);
+        audio.play()
+    }
+
+    viewScoreModal = () => {
+        this.setState({ visibilityScoreModal: true })
     }
 
     render() {
@@ -51,7 +64,12 @@ class Game extends Component {
 
                 <div id="drone" className="drone scroll_smooth">
                 </div>
+                {this.state.game_over === true && 
+
+                <UiModal playSound={this.play} />
+                }
             </div>
+
         );
     }
 }
