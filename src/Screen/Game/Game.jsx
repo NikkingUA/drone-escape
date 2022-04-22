@@ -14,12 +14,16 @@ class Game extends Component {
         this.descending = null;
         this.ascending = null;
         this.smooth_jump = null;
+        this.stop = false;
+
         this.state = {
-            y: 0
+            y: 0,
+            game_over: false
         }
     }
 
     componentDidMount() {
+        console.log("MOUNT");
         this.drone = document.getElementById("drone");
         this.drone_height = this.drone.offsetHeight;
 
@@ -36,10 +40,19 @@ class Game extends Component {
     componentDidUpdate(prevProps, prevState) {
         console.log(this.maxOffset, this.state.y);
         // console.log(this.state.y);
+        // let stop = false;
 
-        if (this.state.y > this.maxOffset) {
+        // if drone is out of bounds
+
+        if ((this.state.y > this.maxOffset || this.state.y < -this.maxOffset) && !this.state.game_over) {
             console.log("STOP");
-            clearInterval(this.descending)
+            console.log(prevState);
+            // this.stop = true
+            clearInterval(this.descending);
+
+            this.setState({
+                game_over: true,
+            })
         }
 
     }
@@ -47,24 +60,26 @@ class Game extends Component {
     jump = (e) => {
         let deltaY = 0;
 
-        if (this.state.y < -this.maxOffset) {
+        if (this.state.y < -this.maxOffset - 200) {
             console.log("STOP");
             clearInterval(this.descending)
         } else {
-            deltaY = 200
+            deltaY = 200;
+            /* this.smooth_jump = setInterval(() => {
+                this.setState({
+                    y: this.state.y - 10
+                })
+            }, 20);
+
+            setTimeout(() => clearInterval(this.smooth_jump), 200) */
         }
 
 
-        this.smooth_jump = setInterval(() => {
-            this.setState({
-                y: this.state.y - deltaY
-            })
-        }, 30);
-        clearInterval(this.smooth_jump);
+        // clearInterval(this.smooth_jump);
 
-        /* this.setState({
+        this.setState({
             y: this.state.y - deltaY
-        }) */
+        })
     }
 
     render() {
