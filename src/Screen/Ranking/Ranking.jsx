@@ -7,119 +7,18 @@ import "./Ranking.scss"
 import UiButton from "../../Components/FunctionComponents/UiButton/UiButton";
 import { Link } from "react-router-dom";
 import routes from "../../Routing/routes";
+import { useNavigate} from "react-router-dom";
 
 
 const Ranking = (props) => {
-
+    const navigate = useNavigate()
     const usersDB = JSON.parse(localStorage.getItem("drone-leaderboard"));
     usersDB.sort((a, b) => b.score - a.score);
-    console.log(usersDB);
+    //console.log(usersDB);
 
-    const playAgain = (e) => {
-
-        // set fake users in localstorage
-        /*  const user = [
-             {
-                 name: "fede",
-                 score: 200
-             },
-             {
-                 name: "pascu",
-                 score: 300
-             },
-             {
-                 name: "mykyta",
-                 score: 250
-             },
-             {
-                 name: "fede",
-                 score: 210
-             },
-             {
-                 name: "pascu",
-                 score: 341
-             },
-             {
-                 name: "mykyta",
-                 score: 450
-             },
-             {
-                 name: "fede",
-                 score: 522
-             },
-             {
-                 name: "pascu",
-                 score: 113
-             },
-             {
-                 name: "mykyta",
-                 score: 14
-             },
-             {
-                 name: "fede",
-                 score: 635
-             },
-             {
-                 name: "pascu",
-                 score: 1246
-             },
-             {
-                 name: "mykyta",
-                 score: 267
-             },
-             {
-                 name: "fede",
-                 score: 200
-             },
-             {
-                 name: "pascu",
-                 score: 300
-             },
-             {
-                 name: "mykyta",
-                 score: 250
-             },
-             {
-                 name: "fede",
-                 score: 210
-             },
-             {
-                 name: "pascu",
-                 score: 341
-             },
-             {
-                 name: "mykyta",
-                 score: 450
-             },
-             {
-                 name: "fede",
-                 score: 522
-             },
-             {
-                 name: "pascu",
-                 score: 113
-             },
-             {
-                 name: "mykyta",
-                 score: 14
-             },
-             {
-                 name: "fede",
-                 score: 635
-             },
-             {
-                 name: "pascu",
-                 score: 1246
-             },
-             {
-                 name: "mykyta",
-                 score: 267
-             },
- 
-         ];
- 
-         localStorage.setItem("drone-leaderboard", JSON.stringify(user)); */
-
+    const goTo = (params)=> (e) => {
+        console.log("next");
+        navigate(params)
     }
 
     return <>
@@ -139,7 +38,7 @@ const Ranking = (props) => {
                 <div className="leaderboard-footer">
                     <UiButton
                         btnType="submit"
-                        callback={playAgain}
+                        callback={goTo(routes.WELCOME)}
                         btnClass={"is-error leaderboard-btn"}
                         innerText={"Play Again"}
                     />
@@ -150,11 +49,10 @@ const Ranking = (props) => {
 };
 
 const renderUser = (user, key) => {
-    console.log('test');
     return (
         <li key={`user_${key}`} className="leaderboard-item">
             <span>{key + 1}</span>
-            <span className="leaderboard-name">{user.name}</span>
+            <span className="leaderboard-name">{user.username}</span>
             <span className="leaderboard-score">
                 {user.score}
             </span>

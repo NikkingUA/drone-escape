@@ -1,20 +1,17 @@
 import React from "react";
 import { PropTypes } from "prop-types";
-import { useNavigate } from "react-router-dom";
 import './UiButton.scss'
 
 const UiButton = (props) => {
 
-    const navigate = useNavigate();
-
-    function handleClick(e){
+    function handleClick(e) {
         props.callback(e);
     }
 
     return <>
         <button
             type={props.btnType}
-            onClick={navigate}
+            onClick={handleClick}
             className={`nes-btn ${props.btnClass}`}
             style={props.btnStyle}
         >
@@ -28,8 +25,7 @@ UiButton.defaultProps = {
 }
 
 UiButton.propTypes = {
-    navigate:PropTypes.string.isRequired,
-    callback: PropTypes.func,
+    callback: PropTypes.func.isRequired,
     btnType: PropTypes.string,
     btnClass: PropTypes.string,
     btnStyle: PropTypes.object,

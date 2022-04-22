@@ -30,7 +30,7 @@ body {
     .bg {
         width: 200%;
         height: 100vh;
-        background-size: 30%;
+        //background-size: 30%;
         bottom: 0;
         left: 0;
         position: fixed;
@@ -75,25 +75,14 @@ body {
     .ostacle_top {
         background: url("../../Assets/img/obstacles/smog.png") repeat-x top;
         z-index: 10;
-        width: 200%;
-        height: 300px;
-        background-size: 30%;
-        top: 0;
-        left: 0;
-        position: fixed;
-        animation: slide 10s linear infinite;
+        animation: slideBot 1s ease-out;
     }
 
     .ostacle_bottom {
-        background: url("../../Assets/img/obstacles/lamps_cars.png") repeat-x 0 bottom;
+        background: url("../../Assets/img/obstacles/lamp_cars.png") repeat-x 0 bottom;
         z-index: 10;
-        width: 200%;
-        height: 300px;
-        background-size: 30%;
-        bottom: 0;
-        left: 0;
-        position: fixed;
-        animation: slide 5s linear infinite;
+        
+        animation: slideLat 5s linear infinite;
     }
 
     @keyframes slide {
@@ -102,7 +91,26 @@ body {
         }
 
         to {
-            transform: translateX(-30%);
+            transform: translateX(-37.5%);
+        }
+    }
+    @keyframes slideBot {
+        from {
+            transform: translateY(-20%);
+        }
+
+        to {
+            transform: translateY(0%);
+        }
+    }
+    
+    @keyframes slideLat {
+        from {
+            transform: translateX(0);
+        }
+
+        to {
+            transform: translateX(-37.5%);
         }
     }
 }

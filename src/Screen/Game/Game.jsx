@@ -1,4 +1,6 @@
-import React, { Component } from "react"; import UiModal from "../../Components/FunctionComponents/UiModal/UiModal";
+import React, { Component } from "react";
+import UiModal from "../../Components/FunctionComponents/UiModal/UiModal";
+import withRouter from "../../Utils/withNavigation";
 import "./game.scss";
 import sound from "../../Assets/sound/sound.mp3"
 
@@ -12,7 +14,9 @@ class Game extends Component {
         this.descending = null;
         this.scoreInterval = null;
         this.obstaclesTimer = null;
-
+        this.location = this.props.router.location;
+        this.navigate = this.props.router.navigate;
+        this.params = this.props.router.params;
 
         this.state = {
             ostacle: false,
@@ -32,10 +36,9 @@ class Game extends Component {
         this.drone_height = this.drone.offsetHeight;
         this.maxOffset = window.innerHeight / 2 - this.drone_height / 2;
 
-
         // timeout -> this.maxOffset -= 300px OBSTACLES!!!
         this.obstaclesTimer = setTimeout(() => {
-            this.maxOffset -= 300;
+            this.maxOffset -= 200;
             this.setState({
                 ostacle: !this.state.ostacle,
             });
@@ -55,7 +58,6 @@ class Game extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        // console.log(this.maxOffset, this.state.y);
 
         // if drone is out of bounds
         if ((this.state.y > this.maxOffset || this.state.y < -this.maxOffset) && !this.state.game_over) {
@@ -88,22 +90,6 @@ class Game extends Component {
         })
     }
 
-    /* scoreGame = () => {
-        this.scoreInterval = setInterval(() => {
-            this.setState({
-                counter: this.state.counter + 1,
-            });
-        }, 1000);
-    } */
-
-    /* intervalOstacle = () => {
-        setTimeout(() => {
-            this.setState({
-                ostacle: !this.state.ostacle,
-            });
-        }, 13000);
-    }; */
-
     play() {
         const audio = new Audio(sound);
         audio.play()
@@ -118,7 +104,7 @@ class Game extends Component {
                     </div>
 
                     {this.state.ostacle &&
-                        <div className="ostacle_top"></div>
+                        <div className="ostacle_top bg"></div>
                     }
 
                     <div className="sky bg">
@@ -134,7 +120,7 @@ class Game extends Component {
                     </div>
                     {
                         this.state.ostacle &&
-                        <div className="ostacle_bottom "></div>
+                        <div className="ostacle_bottom bg "></div>
                     }
                 </div >
 
@@ -145,11 +131,11 @@ class Game extends Component {
 
                 {this.state.game_over === true &&
 
-                    <UiModal playSound={this.play} />
+                    <UiModal score={this.state.counter} />
                 }
             </div >
         );
     }
 }
 
-export default Game;
+export default withRouter(Game);
