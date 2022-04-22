@@ -16,18 +16,33 @@ class Game extends Component {
     this.state = {
       ostacle: false,
       counter: 0,
-      timeStart: 0,
+      timeStart: 3,
     };
   }
 
   componentDidMount() {
-    this.drone = document.getElementById("drone");
-    this.drone_height = this.drone.offsetHeight;
+    for (let i = 0; i < 4; i++) {
+      setTimeout(() => {
+        this.setState({
+          timeStart: --i,
+        });
+        console.log(i);
+      }, 3000);
+    }
+    setTimeout(() => {
+      this.drone = document.getElementById("drone");
+      this.drone_height = this.drone.offsetHeight;
 
-    this.maxOffset = window.innerHeight / 2 - this.drone_height / 2;
+      this.maxOffset = window.innerHeight / 2 - this.drone_height / 2;
 
-    this.drone.style.setProperty("--y", this.maxOffset + "px");
+      this.drone.style.setProperty("--y", this.maxOffset + "px");
+      // this.scoreGame();
+    }, 3000);
   }
+
+  // componentDidUpdate() {
+  //   this.scoreGame();
+  // }
 
   jumpDrone = (e) => {
     this.drone.style.setProperty("--y", -this.maxOffset + "px");
@@ -38,26 +53,16 @@ class Game extends Component {
     );
   };
 
-  //   const myTimeout = setTimeout(myGreeting, 3000);
-
-  // function myGreeting() {
-  //   document.getElementById("demo").innerHTML = "Happy Birthday to You !!"
-  // }
-
-  // function myStopFunction() {
-  //   clearTimeout(myTimeout);
-  // }
-
   scoreGame() {
-    let myTimeout = setTimeout(() => {
+    let myInterval = setInterval(() => {
       this.setState({
         ...this.state,
         counter: this.state.counter + 1,
       });
-    }, 100);
+    }, 1000);
 
     if (this.state.counter === 100) {
-      clearTimeout(myTimeout);
+      clearInterval(myInterval);
     }
   }
 
@@ -66,16 +71,17 @@ class Game extends Component {
       this.setState({
         ostacle: !this.state.ostacle,
       });
-    }, 10000);
+    }, 13000);
   };
 
   render() {
-    this.scoreGame();
-
+    console.log("rerender");
     return (
       <div className="container" onClick={this.jumpDrone}>
         <div className="parallax">
-          <div className="score">Score: {this.state.counter}</div>
+          <div className="score">
+            Score: {this.state.counter}, timeStart: {this.state.timeStart}
+          </div>
           {this.state.ostacle ? (
             <div className="ostacle_top animate"></div>
           ) : (
