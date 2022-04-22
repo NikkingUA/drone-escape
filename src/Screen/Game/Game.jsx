@@ -10,9 +10,9 @@ class Game extends Component {
         this.drone_height = null;
         this.maxOffset = null;
         this.descending = null;
-        this.ascending = null;
-        // this.smooth_jump = null;
-        this.intervalOstacle();
+        this.scoreInterval = null;
+        this.obstaclesTimer = null;
+
 
         this.state = {
             ostacle: false,
@@ -30,11 +30,22 @@ class Game extends Component {
         console.log("MOUNT");
         this.drone = document.getElementById("drone");
         this.drone_height = this.drone.offsetHeight;
-
         this.maxOffset = window.innerHeight / 2 - this.drone_height / 2;
 
 
         // timeout -> this.maxOffset -= 300px OBSTACLES!!!
+        this.obstaclesTimer = setTimeout(() => {
+            this.maxOffset -= 300;
+            this.setState({
+                ostacle: !this.state.ostacle,
+            });
+        }, 3000);
+
+        this.scoreInterval = setInterval(() => {
+            this.setState({
+                counter: this.state.counter + 1,
+            });
+        }, 250);
 
         this.descending = setInterval(() => {
             this.setState({
@@ -44,18 +55,19 @@ class Game extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        console.log(this.maxOffset, this.state.y);
+        // console.log(this.maxOffset, this.state.y);
 
         // if drone is out of bounds
         if ((this.state.y > this.maxOffset || this.state.y < -this.maxOffset) && !this.state.game_over) {
             console.log("STOP");
-            console.log(prevState);
-            // this.stop = true
             clearInterval(this.descending);
 
             this.setState({
                 game_over: true,
             })
+
+        } else if (this.state.game_over) {
+            clearInterval(this.scoreInterval);
         }
 
     }
@@ -68,65 +80,46 @@ class Game extends Component {
             clearInterval(this.descending)
         } else {
             deltaY = 200;
-            /* this.smooth_jump = setInterval(() => {
-                this.setState({
-                    y: this.state.y - 10
-                })
-            }, 20);
-
-            setTimeout(() => clearInterval(this.smooth_jump), 200) */
         }
 
-
-        // clearInterval(this.smooth_jump);
 
         this.setState({
             y: this.state.y - deltaY
         })
     }
 
-    scoreGame() {
-        let myInterval = setInterval(() => {
+    /* scoreGame = () => {
+        this.scoreInterval = setInterval(() => {
             this.setState({
-                ...this.state,
                 counter: this.state.counter + 1,
             });
         }, 1000);
+    } */
 
-        if (this.state.counter === 100) {
-            clearInterval(myInterval);
-        }
-    }
-
-    intervalOstacle = () => {
+    /* intervalOstacle = () => {
         setTimeout(() => {
             this.setState({
                 ostacle: !this.state.ostacle,
             });
         }, 13000);
-    };
+    }; */
 
     play() {
         const audio = new Audio(sound);
         audio.play()
     }
 
-    viewScoreModal = () => {
-        this.setState({ visibilityScoreModal: true })
-    }
-
     render() {
         return (
-            <div className="container" onClick={this.jumpDrone}>
-                <div className="parallax">
+            <div className="container">
+                <div className="parallax" onClick={this.jumpDrone}>
                     <div className="score">
                         Score: {this.state.counter}, timeStart: {this.state.timeStart}
                     </div>
-                    {this.state.ostacle ? (
-                        <div className="ostacle_top animate"></div>
-                    ) : (
-                        ""
-                    )}
+
+                    {this.state.ostacle &&
+                        <div className="ostacle_top"></div>
+                    }
 
                     <div className="sky bg">
                         <div className="backhouses bg">
@@ -140,11 +133,8 @@ class Game extends Component {
                         </div>
                     </div>
                     {
-                        this.state.ostacle ? (
-                            <div className="ostacle_bottom animate"></div>
-                        ) : (
-                            ""
-                        )
+                        this.state.ostacle &&
+                        <div className="ostacle_bottom "></div>
                     }
                 </div >
 

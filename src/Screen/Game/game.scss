@@ -115,15 +115,12 @@ body {
     height: 48px;
     width: calc(384px / 8);
     background-image: url("../../Assets/img/drone-sprite-walk-2.png");
-    // animation: sprite 1.5s steps(8) infinite, descending infinite linear 5s 15s;
     animation: sprite 1.5s steps(8) infinite;
 
     position: absolute;
     top: 50%;
     left: 10%;
 
-    // transform: translate(-50%, -50%) scale(2) translateY(var(--y));
-    // transition: transform 6s linear;
     transform: translate(-50%, -50%) scale(2);
 
     @keyframes sprite {
@@ -132,11 +129,3 @@ body {
         }
     }
 }
-
-// @keyframes descending{
-//     from{transform:translateY(0%) scale(3)
-//     }
-//     to{
-//         transform:translateY(700%) scale(3)
-//     }
-// }
