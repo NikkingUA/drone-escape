@@ -30,6 +30,8 @@ class Game extends Component {
         this.maxOffset = window.innerHeight / 2 - this.drone_height / 2;
 
 
+        // timeout -> this.maxOffset -= 300px OBSTACLES!!!
+
         this.descending = setInterval(() => {
             this.setState({
                 y: this.state.y + 10
@@ -39,11 +41,8 @@ class Game extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         console.log(this.maxOffset, this.state.y);
-        // console.log(this.state.y);
-        // let stop = false;
 
         // if drone is out of bounds
-
         if ((this.state.y > this.maxOffset || this.state.y < -this.maxOffset) && !this.state.game_over) {
             console.log("STOP");
             console.log(prevState);
