@@ -14,7 +14,7 @@ const UiButton = (props) => {
     return <>
         <button
             type={props.btnType}
-            onClick={props.navigate}
+            onClick={navigate}
             className={`nes-btn ${props.btnClass}`}
             style={props.btnStyle}
         >
@@ -30,9 +30,9 @@ UiButton.defaultProps = {
 UiButton.propTypes = {
     navigate:PropTypes.string.isRequired,
     callback: PropTypes.func,
-    type: PropTypes.string,
-    class: PropTypes.string,
-    style: PropTypes.object,
+    btnType: PropTypes.string,
+    btnClass: PropTypes.string,
+    btnStyle: PropTypes.object,
 
 }
 

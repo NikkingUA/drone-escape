@@ -4,6 +4,7 @@ import UiButton from "../../Components/FunctionComponents/UiButton/UiButton";
 import UiInput from "../../Components/FunctionComponents/UiInput/UiInput";
 import UiHeader from "../../Components/FunctionComponents/UiHeader/UiHeader";
 import UiSocial from "../../Components/FunctionComponents/UiSocial/UiSocial";
+import routes  from "../../Routing/routes";
 
 import './Welcome.scss'
 
@@ -26,10 +27,11 @@ function Welcome() {
         />
 
         <UiButton
-            navigate="/Tutorial"
+            navigate={routes.TUTORIAL}
             innerText="Vai al Tutorial"
         />
         <UiSocial />
+
     </div>;
 };
 

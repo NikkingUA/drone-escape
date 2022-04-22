@@ -2,15 +2,15 @@ import React from "react";
 import "./tutorial.css";
 
 import Carousel from "../../Components/FunctionComponents/Carousel/Carousel";
+import routes from "../../Routing/routes";
+import UiButton from "../../Components/FunctionComponents/UiButton/UiButton";
 
-const Tutorial = (props) => {
+function Tutorial(){
   return (
     <div className="block_screen">
       <Carousel />
       <div className="btn_position">
-        <button type="button" className=" nes-btn is-error" navigate="/drone-escape">
-          Play
-        </button>
+        <UiButton  className="is-error" navigate={routes.GAME} innerText="Play"/>
       </div>
     </div>
   );

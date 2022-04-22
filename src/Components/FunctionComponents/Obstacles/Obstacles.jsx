@@ -1,6 +1,6 @@
 import React from "react";
 
-const Obstacles = (props) => {
+function Obstacles(props){
   return <></>;
 };
 
