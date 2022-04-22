@@ -9,45 +9,81 @@ class Game extends Component {
         this.drone = null;
         this.drone_height = null;
         this.maxOffset = null;
+        this.descending = null;
+        this.ascending = null;
+        // this.smooth_jump = null;
         this.intervalOstacle();
 
         this.state = {
             ostacle: false,
             counter: 0,
             timeStart: 3,
-            visibilityScoreModal: false
+            visibilityScoreModal: false,
+            y: 0,
+            game_over: false
 
         };
+
     }
 
     componentDidMount() {
-        for (let i = 0; i < 4; i++) {
-            setTimeout(() => {
-                this.setState({
-                    timeStart: --i,
-                });
-                console.log(i);
-            }, 3000);
+        console.log("MOUNT");
+        this.drone = document.getElementById("drone");
+        this.drone_height = this.drone.offsetHeight;
+
+        this.maxOffset = window.innerHeight / 2 - this.drone_height / 2;
+
+
+        // timeout -> this.maxOffset -= 300px OBSTACLES!!!
+
+        this.descending = setInterval(() => {
+            this.setState({
+                y: this.state.y + 10
+            })
+        }, 30);
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        console.log(this.maxOffset, this.state.y);
+
+        // if drone is out of bounds
+        if ((this.state.y > this.maxOffset || this.state.y < -this.maxOffset) && !this.state.game_over) {
+            console.log("STOP");
+            console.log(prevState);
+            // this.stop = true
+            clearInterval(this.descending);
+
+            this.setState({
+                game_over: true,
+            })
         }
-        setTimeout(() => {
-            this.drone = document.getElementById("drone");
-            this.drone_height = this.drone.offsetHeight;
 
-            this.maxOffset = window.innerHeight / 2 - this.drone_height / 2;
-
-            this.drone.style.setProperty("--y", this.maxOffset + "px");
-            // this.scoreGame();
-        }, 3000);
     }
 
     jumpDrone = (e) => {
-        this.drone.style.setProperty("--y", -this.maxOffset + "px");
+        let deltaY = 0;
 
-        setTimeout(
-            () => this.drone.style.setProperty("--y", this.maxOffset + "px"),
-            2000
-        );
-    };
+        if (this.state.y < -this.maxOffset - 200) {
+            console.log("STOP");
+            clearInterval(this.descending)
+        } else {
+            deltaY = 200;
+            /* this.smooth_jump = setInterval(() => {
+                this.setState({
+                    y: this.state.y - 10
+                })
+            }, 20);
+
+            setTimeout(() => clearInterval(this.smooth_jump), 200) */
+        }
+
+
+        // clearInterval(this.smooth_jump);
+
+        this.setState({
+            y: this.state.y - deltaY
+        })
+    }
 
     scoreGame() {
         let myInterval = setInterval(() => {
@@ -112,7 +148,11 @@ class Game extends Component {
                     }
                 </div >
 
-                <div id="drone" className="drone scroll_smooth"></div>
+                <div id="drone" className="drone scroll_smooth" style={{
+                    transform: `translate(-50%, -50%) translateY(${this.state.y}px) scale(2)`
+                }}>
+                </div>
+
                 {this.state.game_over === true &&
 
                     <UiModal playSound={this.play} />
