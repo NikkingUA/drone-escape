@@ -1,21 +1,22 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import './Welcome.scss'
 
 import UiButton from "../../Components/FunctionComponents/UiButton/UiButton";
 import UiInput from "../../Components/FunctionComponents/UiInput/UiInput";
 import UiHeader from "../../Components/FunctionComponents/UiHeader/UiHeader";
 import UiSocial from "../../Components/FunctionComponents/UiSocial/UiSocial";
+import ParallaxBg from "../../Components/FunctionComponents/ParallaxBg/ParallaxBg";
+
 import routes from "../../Routing/routes";
-
-import './Welcome.scss'
-import { useNavigate} from "react-router-dom";
-
 
 function Welcome() {
 
     const navigate = useNavigate()
     const [state, setState] = useState(
         {
-            username:""
+            username: ""
         }
     )
     const goTo = (params) => (e) => {
@@ -24,27 +25,29 @@ function Welcome() {
     }
 
     function CbInput(e) {
-        
         setState({
             username: e.target.value
         })
-        console.log(state.username);
+        // console.log(state.username);
     }
 
 
 
     return <div className="Welcome flex">
+        <ParallaxBg />
         <UiHeader />
 
         <UiInput
             callback={CbInput}
             innerText="Inserisci il tuo nome"
+            inputPlaceholder={"Type your nickname"}
             isRequired
         />
 
         <UiButton
             callback={goTo(`${routes.TUTORIAL}/?username=${state.username}`)}
-            innerText="Vai al Tutorial"
+            innerText="Play"
+            btnClass={"is-warning"}
         />
         <UiSocial />
 

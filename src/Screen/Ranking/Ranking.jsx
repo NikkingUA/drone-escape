@@ -7,17 +7,18 @@ import "./Ranking.scss"
 import UiButton from "../../Components/FunctionComponents/UiButton/UiButton";
 import { Link } from "react-router-dom";
 import routes from "../../Routing/routes";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 const Ranking = (props) => {
     const navigate = useNavigate()
     const usersDB = JSON.parse(localStorage.getItem("drone-leaderboard"));
-    usersDB.sort((a, b) => b.score - a.score);
+    if (usersDB !== null) {
+        usersDB.sort((a, b) => b.score - a.score);
+    }
     //console.log(usersDB);
 
-    const goTo = (params)=> (e) => {
-        console.log("next");
+    const goTo = (params) => (e) => {
         navigate(params)
     }
 
@@ -30,10 +31,13 @@ const Ranking = (props) => {
                     <i className="nes-icon close is-small icon-white"></i>
                 </Link>
 
-                <ol className="users-container">
-                    {usersDB.map(renderUser)}
-                </ol>
+                {usersDB !== null ?
+                    (<ol className="users-container">
 
+                        {usersDB.map(renderUser)}
+                    </ol>) :
+                    (<p>Guests are not displayed in a leaderboard 🤨</p>)
+                }
 
                 <div className="leaderboard-footer">
                     <UiButton

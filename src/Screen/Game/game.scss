@@ -13,6 +13,16 @@ body {
     margin: 0;
 }
 
+
+.bg {
+    width: 200%;
+    height: 100vh;
+    //background-size: 30%;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+}
+
 .parallax {
     overflow: hidden;
     position: fixed;
@@ -25,99 +35,8 @@ body {
         left: 30px;
         z-index: 23;
     }
-
-    //image-rendering: pixelated;
-    .bg {
-        width: 200%;
-        height: 100vh;
-        //background-size: 30%;
-        bottom: 0;
-        left: 0;
-        position: fixed;
-    }
-
-    .sky {
-        background: url("../../Assets/img/bg/Pale/sky_pale.png") repeat 0 0;
-        z-index: -1;
-        animation: slide 100s linear infinite;
-    }
-
-    .backhouses {
-        background: url("../../Assets/img/bg/Pale/houses3_pale.png") repeat-x 0 bottom;
-        z-index: -2;
-        animation: slide 100s linear infinite;
-    }
-
-    .front-houses2 {
-        background: url("../../Assets/img/bg/Pale/houses2_pale.png") repeat-x 0 bottom;
-        z-index: -3;
-        animation: slide 100s linear infinite;
-    }
-
-    .front-houses1 {
-        background: url("../../Assets/img/bg/Pale/houses1_pale.png") repeat-x 0 bottom;
-        z-index: -4;
-        animation: slide 100s linear infinite;
-    }
-
-    .road {
-        background: url("../../Assets/img/bg/Pale/road_pale.png") repeat-x 0 bottom;
-        z-index: -5;
-        animation: slide 90s linear infinite;
-    }
-
-    .crosswalk {
-        background: url("../../Assets/img/bg/Pale/crosswalk_pale.png") repeat-x 0 bottom;
-        z-index: -6;
-        animation: slide 100s linear infinite;
-    }
-
-    .ostacle_top {
-        background: url("../../Assets/img/obstacles/smog.png") repeat-x top;
-        z-index: 10;
-        animation: slideBot 1s ease-out;
-    }
-
-    .ostacle_bottom {
-        background: url("../../Assets/img/obstacles/lamp_cars.png") repeat-x 0 bottom;
-        z-index: 10;
-        
-        animation: slideLat 5s linear infinite;
-    }
-
-    @keyframes slide {
-        from {
-            transform: translateX(0);
-        }
-
-        to {
-            transform: translateX(-37.5%);
-        }
-    }
-    @keyframes slideBot {
-        from {
-            transform: translateY(-20%);
-        }
-
-        to {
-            transform: translateY(0%);
-        }
-    }
-    
-    @keyframes slideLat {
-        from {
-            transform: translateX(0);
-        }
-
-        to {
-            transform: translateX(-37.5%);
-        }
-    }
 }
 
-:root {
-    --y: 0;
-}
 
 .drone {
     height: 48px;
