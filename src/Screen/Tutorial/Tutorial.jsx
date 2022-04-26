@@ -21,7 +21,7 @@ function Tutorial() {
         <div className="block_screen">
             <Carousel />
             <div className="btn_position">
-                <UiButton className="is-error" callback={goTo(`${routes.GAME}/?username=${username}`)} innerText="Play" />
+                <UiButton btnClass={"is-warning"} callback={goTo(`${routes.GAME}/?username=${username}`)} innerText="Play" />
             </div>
         </div>
     );

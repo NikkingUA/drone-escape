@@ -29,7 +29,8 @@ class Game extends Component {
             timeStart: 3,
             visibilityScoreModal: false,
             y: 0,
-            game_over: false
+            game_over: false,
+            // isDead: false
         };
 
     }
@@ -106,10 +107,11 @@ class Game extends Component {
 
                 <div className="parallax" onClick={this.jumpDrone}>
                     <div className="score">
-                        Score: {this.state.counter}, timeStart: {this.state.timeStart}
+                        Score: {this.state.counter}
                     </div>
 
-                    {this.state.ostacle &&
+                    {
+                        this.state.ostacle &&
                         <div className="ostacle_top bg"></div>
                     }
 

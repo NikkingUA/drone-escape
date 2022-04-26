@@ -2,6 +2,7 @@ import React from "react";
 
 //STYLE
 import "./Ranking.scss"
+import trophy from "../../Assets/img/trophy.png"
 
 //COMPONENTS
 import UiButton from "../../Components/FunctionComponents/UiButton/UiButton";
@@ -55,8 +56,17 @@ const Ranking = (props) => {
 const renderUser = (user, key) => {
     return (
         <li key={`user_${key}`} className="leaderboard-item">
-            <span>{key + 1}</span>
-            <span className="leaderboard-name">{user.username}</span>
+            <span>{
+                (key + 1)
+            }</span>
+            <span className="leaderboard-name">
+                {key === 0 &&
+                    <img src={trophy} className={"trophy"} />
+                }
+                {
+                    user.username
+                }
+            </span>
             <span className="leaderboard-score">
                 {user.score}
             </span>

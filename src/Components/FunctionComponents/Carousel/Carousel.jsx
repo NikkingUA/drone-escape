@@ -18,7 +18,7 @@ function Tutorial(props) {
                                 Click the drone to turn the throttle up.
                             </p>
                             <div className="carousel__snapper"></div>
-                            <div className="bacTest"></div>
+                            <div className="bacTest tut-screen-1"></div>
                         </li>
 
                         <li id="carousel__slide2" tabIndex="0" className="carousel__slide">
@@ -26,22 +26,16 @@ function Tutorial(props) {
                                 Score increases with time, so keep your drone up!
                             </p>
                             <div className="carousel__snapper"></div>
-                            <div className="bacTest"></div>
+                            <div className="bacTest tut-screen-2"></div>
                         </li>
                         <li id="carousel__slide3" tabIndex="0" className="carousel__slide">
                             <p className="tutorial_description">
-                                Click the drone to turn the throttle up.
+                                Avoid smog and street obstacles to master being a pilot!
                             </p>
                             <div className="carousel__snapper"></div>
-                            <div className="bacTest"></div>
+                            <div className="bacTest tut-screen-3"></div>
                         </li>
-                        <li id="carousel__slide4" tabIndex="0" className="carousel__slide">
-                            <p className="tutorial_description">
-                                Click the drone to turn the throttle up.
-                            </p>
-                            <div className="carousel__snapper"></div>
-                            <div className="bacTest"></div>
-                        </li>
+
                     </ol>
 
                     <aside className="carousel__navigation">
@@ -51,7 +45,7 @@ function Tutorial(props) {
                                     href="#carousel__slide1"
                                     className="carousel__navigation-button"
                                 >
-                                    Go to slide 1
+
                                 </a>
                             </li>
                             <li className="carousel__navigation-item">
@@ -59,7 +53,7 @@ function Tutorial(props) {
                                     href="#carousel__slide2"
                                     className="carousel__navigation-button"
                                 >
-                                    Go to slide 2
+
                                 </a>
                             </li>
                             <li className="carousel__navigation-item">
@@ -67,17 +61,10 @@ function Tutorial(props) {
                                     href="#carousel__slide3"
                                     className="carousel__navigation-button"
                                 >
-                                    Go to slide 3
+
                                 </a>
                             </li>
-                            <li className="carousel__navigation-item">
-                                <a
-                                    href="#carousel__slide4"
-                                    className="carousel__navigation-button"
-                                >
-                                    Go to slide 4
-                                </a>
-                            </li>
+
                         </ol>
                     </aside>
                 </section>

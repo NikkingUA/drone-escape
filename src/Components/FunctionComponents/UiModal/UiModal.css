@@ -1,16 +1,16 @@
 .card {
     width: 330px;
-    height: 200px;
+    /* height: 300px; */
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: blueviolet;
+    /* background-color: blueviolet; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: 35px;
+    /* border-radius: 35px; */
 }
 
 /* h1{
